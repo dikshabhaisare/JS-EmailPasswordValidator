@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Email & Password Validator</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="container">
+    <form id="authForm" class="card" novalidate>
+      <h1>Email & Password Validator</h1>
+
+      <!-- EMAIL -->
+      <div id="field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          data-validate="email"
+          aria-describedby="emailHelp emailError"
+          aria-invalid="false"
+        />
+        <div id="emailHelp" class="hint">Use a valid email format (e.g., name@domain.com).</div>
+        <p id="emailError" class="error" aria-live="polite"></p>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            placeholder="Create a strong password"
+            data-validate="password"
+            aria-describedby="passwordRules passwordError"
+            aria-invalid="false"
+          />
+          <button type="button" class="toggle" id="togglePw" aria-label="Show password" data-state="hidden">
+            <!-- simple eye icon (no external libs) -->
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Strength meter -->
+        <div class="strength" aria-hidden="true">
+          <div id="bar1" class="bar" data-bar="1"></div>
+          <div id="bar2" class="bar" data-bar="2"></div>
+          <div id="bar3" class="bar" data-bar="3"></div>
+          <div id="bar4" class="bar" data-bar="4"></div>
+        </div>
+
+        <!-- Rules checklist (you can toggle .ok via JS) -->
+        <ul id="passwordRules" class="rules">
+          <li data-rule="len">At least 8 characters</li>
+          <li data-rule="upper">Contains uppercase letter (A–Z)</li>
+          <li data-rule="lower">Contains lowercase letter (a–z)</li>
+          <li data-rule="num">Contains a number (0–9)</li>
+          <li data-rule="sym">Contains a symbol (!@#$%^&*…)</li>
+        </ul>
+
+        <p id="passwordError" class="error" aria-live="polite"></p>
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          autocomplete="new-password"
+          placeholder="Re-enter your password"
+          data-validate="confirm"
+          aria-describedby="confirmError"
+          aria-invalid="false"
+        />
+        <p id="confirmError" class="error" aria-live="polite"></p>
+      </div>
+
+      <!-- FORM STATUS -->
+      <div class="form-status" role="status" aria-live="polite" id="formStatus"></div>
+
+      <button id="submitBtn" class="btn" type="submit" disabled>Submit</button>
+
+      <!-- Optional: small print -->
+      <p class="fineprint">
+        By creating an account you agree to our
+        <a href="#" tabindex="0">Terms</a> and <a href="#" tabindex="0">Privacy Policy</a>.
+      </p>
+    </form>
+  </main>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
